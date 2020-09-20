@@ -1,8 +1,9 @@
 2048 is a single-player sliding block puzzle game. When two tiles with the same number touch, they merge into one! You will win when you get 2048 title.
 
 ## Preview
-
-<img src="./assets/preview.PNG">
+<p align="center">
+<img src="src/assets/preview.PNG">
+</p>
 
 ## Technologies
 * react: 16.13.1,
