@@ -36,8 +36,8 @@ export default function Header(props) {
         <div className="score-board">
           <div>Time</div>
           <CounterContext.Consumer endgame={endgame}>
-            {({ count, stopCounter }) => (
-              <div className="score" onClick={stopCounter}>
+            {({ count }) => (
+              <div className="score">
                 {count}
               </div>
             )}
