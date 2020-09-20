@@ -133,12 +133,10 @@ class GameLogic {
       return this[keymap]();
     }
     checkWon() {
-      console.log("checking");
       return this.data.indexOf(2048) !== -1;
     }
     checkLose() {
       if (this.hasEmptySquare(this.data)) {
-        console.log("emptySquare1");
         return false;
       }
       //check opposite side

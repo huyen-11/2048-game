@@ -94,14 +94,25 @@ export default class App extends Component {
     this.setState({ value: event.target.value });
   }
   submitPlayer(count) {
-    axios({
-      method: "post",
-      url: "https://jsonserver-huyen.herokuapp.com/players",
-      data: {
-        name: this.state.value,
-        time: count
-      }
-    })
+    let postData = {
+      name: this.state.value,
+      time: count
+    };
+    let axiosConfig = {
+      headers: {
+        "content-type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      data: null
+    };
+    axios
+      .post(
+        "https://jsonserver-huyen.herokuapp.com/players",
+        postData,
+        axiosConfig
+      )
       .then((response) => {
         window.location.replace("/");
       })
@@ -143,14 +154,21 @@ export default class App extends Component {
                   >
                     Restart
                   </div>
-                  {won && <form onSubmit={() => this.submitPlayer(count)}>
-                    <input
-                      className="retry-button l-input"
-                      placeholder="Add your name to leaderboard"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    />
-                  </form>}
+                  {won && (
+                    <form
+                      onSubmit={(event) => {
+                        event.preventDefault();
+                        this.submitPlayer(count);
+                      }}
+                    >
+                      <input
+                        className="retry-button l-input"
+                        placeholder="Add your name to leaderboard"
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                      />
+                    </form>
+                  )}
                 </div>
               )}
             </CounterContext.Consumer>
@@ -168,8 +186,8 @@ export default class App extends Component {
           <div className="game-explain">
             <b> HOW TO PLAY </b>: Use your <b>arrow keys</b> to move the tiles.
             When two tiles with the same number touch, they{" "}
-            <b>merge into one!</b> Your target title is <b>2048</b> in the
-            shortest time.
+            <b>merge into one!</b> Win your target title <b>2048</b> to add 
+            your name on <b>leaderboard</b>.
           </div>
         </div>
       </CounterProvider>
