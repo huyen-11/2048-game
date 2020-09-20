@@ -1,6 +1,7 @@
-2048 is a single-player sliding block puzzle game. When two tiles with the same number touch, they merge into one! You will win when you get 2048 title.
-
 ## Preview
+
+2048 is a single-player sliding block puzzle game. When two tiles with the same number touch, they merge into one! You will win when you get 2048 title.  
+Deployed: [https://game2048-huyen.web.app/](https://game2048-huyen.web.app/)  
 <p align="center">
 <img src="src/assets/preview.PNG">
 </p>
@@ -19,4 +20,8 @@
 To run this project, install it locally using npm:
 ```
 $ npm start
+```
+To build for production:
+```
+$ npm run build
 ```
